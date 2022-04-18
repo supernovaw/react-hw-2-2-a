@@ -1,0 +1,14 @@
+.CityAddForm {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+
+.CityAddForm div {
+  text-align: start;
+  flex-basis: 150px;
+}
+
+.CityAddForm div label {
+  display: block;
+}

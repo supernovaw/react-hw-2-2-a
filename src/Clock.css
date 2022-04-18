@@ -1,0 +1,147 @@
+.Clock {
+  margin: 0.1em;
+  /* font-size is the radius */
+  font-size: 100px;
+  background-color: white;
+  border-radius: 1em;
+  border: 0.015em solid black;
+  width: 2em;
+  height: 2em;
+  position: relative;
+  box-shadow: 0 0 0.05em grey;
+}
+
+.clock-name {
+  font-size: 20%;
+  position: absolute;
+  width: 100%;
+  top: 20%;
+  user-select: none;
+}
+
+.remove-button {
+  font-size: 15%;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 67%;
+  color: white;
+  background-color: red;
+  box-shadow: 0 0 0.5em red;
+  padding: 0.2em 0.5em;
+  border-radius: 0.2em;
+  user-select: none;
+  cursor: pointer;
+  transition: 200ms;
+  opacity: 0;
+}
+
+.Clock:hover .remove-button {
+  opacity: 0.4;
+}
+
+.Clock .remove-button:hover {
+  opacity: 1;
+}
+
+.remove-button:active {
+  box-shadow: 0 0 0.7em 0.1em red;
+}
+
+.offset-label {
+  font-family: 'Ubuntu Mono';
+  font-size: 15%;
+  color: #444;
+  position: absolute;
+  width: 100%;
+  top: 60%;
+  user-select: none;
+}
+
+.numeric-time {
+  font-family: 'Ubuntu Mono';
+  font-size: 15%;
+  position: absolute;
+  width: 100%;
+  top: 35%;
+  user-select: none;
+}
+
+.center-dot {
+  font-size: 8%;
+  width: 1em;
+  height: 1em;
+  border-radius: 0.5em;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  background-color: black;
+}
+
+.center-dot-inner {
+  width: 0.6em;
+  height: 0.6em;
+  background-color: #141414;
+  box-shadow: 0 0 0.1em 0.05em #141414;
+}
+
+.hand {
+  position: absolute;
+  background-color: black;
+  left: 1em;
+  top: 1em;
+  transform-origin: 0 0;
+  animation: clock-hand-spin infinite var(--spin-period) linear;
+}
+
+.second-hand {
+  width: 0.95em;
+  height: 0.009em;
+  --spin-period: 60s;
+  --shift-hand-from-center: -.1em;
+}
+
+.second-hand-tip {
+  width: .2em;
+  height: 0.02em;
+
+  --spin-period: 60s;
+  --shift-hand-from-center: -.28em;
+}
+
+.minute-hand {
+  width: 1.05em;
+  height: 0.015em;
+  --spin-period: 3600s;
+  --shift-hand-from-center: -0.2em;
+}
+
+.hour-hand {
+  width: .775em;
+  height: 0.015em;
+  --spin-period: 43200s;
+  --shift-hand-from-center: -0.25em;
+}
+
+.marker {
+  position: absolute;
+  background-color: #ddd;
+  box-shadow: 0 0 0.01em grey;
+  left: 1em;
+  top: 1em;
+  width: 0.1em;
+  height: 0.01em;
+  transform-origin: 0 0;
+  transform: rotate(calc(var(--marker-hour) * 30deg - 90deg)) translate(0.8em, -50%);
+}
+
+@keyframes clock-hand-spin {
+  from {
+    transform: rotate(var(--initial-spin)) translate(var(--shift-hand-from-center), -50%);
+  }
+
+  to {
+    transform: rotate(calc(var(--initial-spin) + 1turn)) translate(var(--shift-hand-from-center), -50%);
+  }
+}
