@@ -31,7 +31,7 @@ export default function Clock({ name, offsetMins, removeRequested }) {
     const prependZero = num => (num < 10 ? "0" : "") + num;
     const newTimeString = [hr, min, sec].map(prependZero).join(":");
     setTimeString(newTimeString);
-  }, 500);
+  }, 500); // delay is .5s for better display with laggy setInterval
 
   useEffect(() => {
     initCssOffsets();
